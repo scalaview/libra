@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row"></div>
+</div>
+
+<%= form_tag(export_aliexpress_index_path, method: :POST) do %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-2 pull-right">
+        <button id="export" class="btn btn-success">Export</button>
+      </div>
+      <input type='hidden' name="format" value="xls">
+      <div class="col-lg-12">
+        <%= check_box_tag 'all', '1', false %>
+        <% @products.each_slice(4).each do |four_products| %>
+          <div class="row">
+            <% four_products.each do |product| %>
+              <div class="col-lg-3">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <%= link_to product.url, target: :_blank do %>
+                      <%= image_tag product.img, :height => 180, :width => 240, :class => "img-response" %>
+                    <% end %>
+                  </div>
+                </div>
+                <label>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <%= truncate(product.title, :length => 70) %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <%= check_box_tag 'urls[]', product.url, false, class: "sku-item"  %>
+                    </div>
+                    <div class="col-lg-6">
+                      <%= product.price %>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+$(function(){
+  $("#all").click(function(){
+    $(".sku-item").prop("checked", $(this).prop("checked"))
+  })
+})
+</script>

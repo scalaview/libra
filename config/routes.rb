@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   constraints :host => /localhost/ do
 
+    get "lightinthebox-products" => "lightinthebox#index"
+
     resources :aliexpress, :only => [] do
       collection do
         post "/export" => "aliexpress#export"

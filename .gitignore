@@ -16,5 +16,6 @@
 !/log/.keep
 /tmp
 config/*.yml
+!/config/secrets.yml
 /vendor/assets
 test/

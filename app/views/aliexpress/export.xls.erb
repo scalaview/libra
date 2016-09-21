@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">产品ID</Data></Cell>
+        <Cell><Data ss:Type="String">产品名称</Data></Cell>
+        <Cell><Data ss:Type="String">产品关键字</Data></Cell>
+        <Cell><Data ss:Type="String">产品其它关键1</Data></Cell>
+        <Cell><Data ss:Type="String">产品其它关键2</Data></Cell>
+        <Cell><Data ss:Type="String">商品图片</Data></Cell>
+        <Cell><Data ss:Type="String">产品类型</Data></Cell>
+        <Cell><Data ss:Type="String">产品分组</Data></Cell>
+        <Cell><Data ss:Type="String">产品简述</Data></Cell>
+        <Cell><Data ss:Type="String">产品详细描述</Data></Cell>
+        <Cell><Data ss:Type="String">系统属性</Data></Cell>
+        <Cell><Data ss:Type="String">自定义属性</Data></Cell>
+        <Cell><Data ss:Type="String">最小计量单位</Data></Cell>
+        <Cell><Data ss:Type="String">销售方式</Data></Cell>
+        <Cell><Data ss:Type="String">每包数量</Data></Cell>
+        <Cell><Data ss:Type="String">零售价</Data></Cell>
+        <Cell><Data ss:Type="String">是否支持批发价</Data></Cell>
+        <Cell><Data ss:Type="String">批发最小数量</Data></Cell>
+        <Cell><Data ss:Type="String">批发优惠百分比</Data></Cell>
+        <Cell><Data ss:Type="String">交货时间</Data></Cell>
+        <Cell><Data ss:Type="String">商家编码</Data></Cell>
+        <Cell><Data ss:Type="String">价格信息</Data></Cell>
+        <Cell><Data ss:Type="String">自定义计重</Data></Cell>
+        <Cell><Data ss:Type="String">产品包装后的重量</Data></Cell>
+        <Cell><Data ss:Type="String">最少多少包内按单件运费</Data></Cell>
+        <Cell><Data ss:Type="String">增加件数</Data></Cell>
+        <Cell><Data ss:Type="String">增加重量</Data></Cell>
+        <Cell><Data ss:Type="String">产品包装尺寸(长)</Data></Cell>
+        <Cell><Data ss:Type="String">产品包装尺寸(宽)</Data></Cell>
+        <Cell><Data ss:Type="String">产品包装尺寸(高)</Data></Cell>
+        <Cell><Data ss:Type="String">运费模板</Data></Cell>
+        <Cell><Data ss:Type="String">有效期</Data></Cell>
+        <Cell><Data ss:Type="String">支付宝</Data></Cell>
+        <Cell><Data ss:Type="String">数据来源</Data></Cell>
+        <Cell><Data ss:Type="String">库存</Data></Cell>
+        <Cell><Data ss:Type="String">服务模板</Data></Cell>
+      </Row>
+    <% @spus.each_with_index do |spu, index| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= spu.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= spu.name.gsub("Moustache®", "").gsub("PrimeCables®", "") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= spu.name.gsub("Moustache®", "").gsub("PrimeCables®", "") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= spu.keywords %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= spu.image_files.map{|i| i.image.url}.join(',') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= 623 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= spu.introduction %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= dynamic.to_s %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 10000 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "单件出售" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= 1 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= spu.retail_price.to_f %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= false %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 50  %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 10 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 30 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= spu.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= skuarray(spu.products).to_s %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= false  %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 1 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 1 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 1 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 0.001 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 1 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 1 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 1 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 1000 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= 30 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "protchar.com" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= 0 %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
