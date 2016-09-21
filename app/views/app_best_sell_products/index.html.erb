@@ -1,0 +1,75 @@
+<div class="row-fluid">
+  <div class="span12">
+
+  <div class="row-fluid">
+    <div class="span11 offset1">
+      <div class="row-fluid">
+        <%= form_tag(best_sale_app_index_path, method: :get) do %>
+
+          <div class="span3 offset6">
+            <div class="row-fluid">
+              <%= text_field_tag :the_date, params[:the_date], class: 'datepicker', data: { 'date-format' => "yyyy-mm-dd" } %>
+            </div>
+          </div>
+
+          <div class="span2">
+            <div class="row-fluid">
+              <button class="btn btn-success">Search</button>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  <%= form_tag(export_aliexpress_index_path, method: :POST) do %>
+    <div class="row-fluid">
+      <div class="span2 pull-right">
+        <div class="row-fluid">
+          <button id="export" class="btn btn-success">Export</button>
+        </div>
+      </div>
+    </div>
+    <input type='hidden' name="format" value="xls">
+    <div class="row-fluid">
+      <div class="span12">
+        <table class="table">
+          <thead>
+            <td>
+              <%= check_box_tag 'all', '1', false %>
+            </td>
+          </thead>
+          <tbody>
+            <% @productsale.each do |sale| %>
+              <tr>
+                <td>
+                  <%= check_box_tag 'ids[]', sale.product_id, false, class: "sku-item"  %>
+                </td>
+                <td>
+                  <%= link_to "#", :class => 'thumbnail', target: :_blank do %>
+                    <%= image_tag sale.product.image_url(:thumb), :height => 80, :width => 80, :alt => "" %>
+                  <% end %>
+                </td>
+                <td data-id="<%= sale.product_id %>" data-profit="<%= sale.gross_profit %>">
+                  <%= truncate(sale.product.name, :length => 70) %>
+                </td>
+                <td>
+                  <%= sale.quantity %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+  $("#all").click(function(){
+    $(".sku-item").prop("checked", $(this).prop("checked"))
+  })
+})
+</script>
