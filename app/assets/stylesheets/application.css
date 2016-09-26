@@ -13,5 +13,6 @@
  *= require_tree .
  *= require bootstrap/dist/css/bootstrap.min.css
  *= require bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.min.css
+ *= require toastr/toastr.min.css
  *= require_self
  */

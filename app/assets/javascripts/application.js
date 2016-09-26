@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+//= require toastr/toastr.min.js
 //= require_tree .
 
 $(function(){

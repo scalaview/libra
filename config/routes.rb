@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   constraints :host => /localhost/ do
 
     get "lightinthebox-products" => "lightinthebox#index"
+    post "toggle-product" => "lightinthebox#toggle"
 
     resources :aliexpress, :only => [] do
       collection do

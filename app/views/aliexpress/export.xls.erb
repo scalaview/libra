@@ -46,9 +46,9 @@
       </Row>
     <% @spus.each_with_index do |spu, index| %>
       <Row>
-        <Cell><Data ss:Type="Number"><%= spu.id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= spu.name.gsub("Moustache®", "").gsub("PrimeCables®", "") %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= spu.name.gsub("Moustache®", "").gsub("PrimeCables®", "") %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= index %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= brand_clean(spu.name) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= brand_clean(spu.name) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= spu.keywords %></Data></Cell>
         <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= spu.image_files.map{|i| i.image.url}.join(',') %></Data></Cell>

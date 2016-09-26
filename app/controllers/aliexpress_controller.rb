@@ -1,7 +1,9 @@
 class AliexpressController < ApplicationController
 
   def export
-    @spus = Product.where(id: params[:ids]).map(&:standard_product)
+    @spus = params[:urls].map do |url|
+      SampleProduct.new REDIS.hgetall(url).merge({url: url, images: images(url)})
+    end.compact
     filename = "products-#{Time.now.to_i}.xls"
 
     respond_to do |format|
