@@ -3,6 +3,7 @@
 </div>
 
 <%= form_tag(export_aliexpress_index_path, method: :POST) do %>
+  <input type='hidden' name="format" value="xls">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-2 pull-right">

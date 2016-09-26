@@ -3,8 +3,8 @@ class LightintheboxController < ApplicationController
   def index
     key = params[:set] || 'lightinthebox'
     @products = REDIS.smembers(key).map do |url|
-      SampleProduct.new REDIS.hgetall(url).merge({url: url, images: images(url)})
-    end
+      SampleProduct.new(attributes.merge({url: url, images: images(url)})) if (attributes = REDIS.hgetall(url)).present?
+    end.compact
   end
 
   def toggle

@@ -8,9 +8,18 @@ module ApplicationHelper
     _name = name
     ["BOB®", "VDL®", "Fei Beauty®", "Danni®", "UOUO®", "Keqi ®", "DANNI®", "MSQ®", "New NOVO®", "New LIDEAL®", "Fenlin ®", "YCID®", "New Clever Cat®", "New Love ALOBON®", "Midnight Cool®", "Girl Zone®",
       "Keqi ®", "Sedona®", "vela.yue®", "Make-up For You®", "Maycheer®", "Y.CID®", "Fenlin ® NBR", "MFN®", "By Nanda®", "Ningmei®", "®"].each do |brand|
-      _name = _name.gsub(/#{brand}/i, '')
+      _name = _name.gsub(/#{brand}/i, '') if _name.present?
     end
-    _name.strip
+    _name.try(:strip).to_s
   end
 
+  def skuarray
+    {"skuArray" => [{"价格" => "1", "库存" => "999", "商家编码" => ""}]}.to_json
+  end
+
+  def dynamic
+    return <<EOF
+;2;;201512802;;
+EOF
+  end
 end
