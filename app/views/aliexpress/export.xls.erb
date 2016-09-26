@@ -47,26 +47,26 @@
     <% @spus.each_with_index do |spu, index| %>
       <Row>
         <Cell><Data ss:Type="Number"><%= index %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= brand_clean(spu.name) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= brand_clean(spu.name) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= spu.keywords %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= brand_clean(spu.title) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= brand_clean(spu.title) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= brand_clean(spu.title) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= spu.image_files.map{|i| i.image.url}.join(',') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= spu.images.join(',') %></Data></Cell>
         <Cell><Data ss:Type="String"><%= 623 %></Data></Cell>
         <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= spu.introduction %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{spu.specifications}#{spu.gallery}" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= dynamic.to_s %></Data></Cell>
         <Cell><Data ss:Type="String"><%= "" %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= 10000 %></Data></Cell>
         <Cell><Data ss:Type="String"><%= "单件出售" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= 1 %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= spu.retail_price.to_f %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= spu.price %></Data></Cell>
         <Cell><Data ss:Type="String"><%= false %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= 50  %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= 10 %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= 30 %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= spu.id %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= index %></Data></Cell>
         <Cell><Data ss:Type="String"><%= skuarray(spu.products).to_s %></Data></Cell>
         <Cell><Data ss:Type="String"><%= false  %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= 1 %></Data></Cell>

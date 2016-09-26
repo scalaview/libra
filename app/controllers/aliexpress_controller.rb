@@ -13,4 +13,8 @@ class AliexpressController < ApplicationController
     end
   end
 
+  private
+  def images(url)
+    REDIS.lrange("imgs|#{url}", 0, -1)
+  end
 end
