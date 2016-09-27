@@ -3,7 +3,11 @@ class LightintheboxController < ApplicationController
   def index
     key = params[:set] || 'lightinthebox'
     @products = REDIS.smembers(key).map do |url|
-      SampleProduct.new(attributes.merge({url: url, images: images(url)})) if (attributes = REDIS.hgetall(url)).present?
+      attributes=REDIS.hgetall(url)
+      if attributes.present?
+        SampleProduct.new(attributes.merge({url: url, images: images(url)}))
+      else
+      end
     end.compact
   end
 

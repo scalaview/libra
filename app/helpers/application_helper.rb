@@ -10,6 +10,7 @@ module ApplicationHelper
       "Keqi ®", "Sedona®", "vela.yue®", "Make-up For You®", "Maycheer®", "Y.CID®", "Fenlin ® NBR", "MFN®", "By Nanda®", "Ningmei®", "®"].each do |brand|
       _name = _name.gsub(/#{brand}/i, '') if _name.present?
     end
+    _name = _name.gsub(/\d|#/, "") if _name.present?
     _name.try(:strip).to_s
   end
 
