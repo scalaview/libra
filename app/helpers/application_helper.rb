@@ -4,6 +4,23 @@ module ApplicationHelper
     REDIS.sismember("lightinthebox-target", key)
   end
 
+  def is_aliexpress_target?(key)
+    REDIS.zscore("aliexpress:target", key)
+  end
+
+  def diy_pagination(con, start, per, total)
+    next_start = (start+per)
+    pre_start = (start - per)
+    html = "<ul class='pagination'>"
+    if pre_start >= 0
+      html = html + "<li><a href='/aliexpress-products?k=#{con}&s=#{pre_start}'>上一页</a></li>"
+    end
+    if next_start < total
+      html = html + "<li><a href='/aliexpress-products?k=#{con}&s=#{next_start}'>下一页</a></li>"
+    end
+    (html + "</ul>").html_safe
+  end
+
   def brand_clean(name)
     _name = name
     ["BOB®", "VDL®", "Fei Beauty®", "Danni®", "UOUO®", "Keqi ®", "DANNI®", "MSQ®", "New NOVO®", "New LIDEAL®", "Fenlin ®", "YCID®", "New Clever Cat®", "New Love ALOBON®", "Midnight Cool®", "Girl Zone®",
